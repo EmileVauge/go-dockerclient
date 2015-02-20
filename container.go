@@ -197,6 +197,17 @@ type Config struct {
 	OnBuild         []string            `json:"OnBuild,omitempty" yaml:"OnBuild,omitempty"`
 }
 
+// Node contains swarm node information
+type Node struct {
+	ID     string            `json:"ID,omitempty" yaml:"ID,omitempty"`
+	IP     string            `json:"IP,omitempty" yaml:"IP,omitempty"`
+	Addr   string            `json:"Addr,omitempty" yaml:"Addr,omitempty"`
+	Name   string            `json:"Name,omitempty" yaml:"Name,omitempty"`
+	Cpus   int64             `json:"Cpus,omitempty" yaml:"Cpus,omitempty"`
+	Memory int64             `json:"Memory,omitempty" yaml:"Memory,omitempty"`
+	Labels map[string]string `json:"Labels,omitempty" yaml:"Labels,omitempty"`
+}
+
 // Container is the type encompasing everything about a container - its config,
 // hostconfig, etc.
 type Container struct {
@@ -223,6 +234,7 @@ type Container struct {
 	Volumes    map[string]string `json:"Volumes,omitempty" yaml:"Volumes,omitempty"`
 	VolumesRW  map[string]bool   `json:"VolumesRW,omitempty" yaml:"VolumesRW,omitempty"`
 	HostConfig *HostConfig       `json:"HostConfig,omitempty" yaml:"HostConfig,omitempty"`
+	Node       *Node             `json:"Node,omitempty" yaml:"Node,omitempty"`
 }
 
 // InspectContainer returns information about a container by its ID.
